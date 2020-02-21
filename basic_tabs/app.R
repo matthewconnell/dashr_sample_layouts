@@ -191,6 +191,8 @@ app$callback(
     else if (tab == 'tab-2') {
       htmlDiv(
         list(
+          
+          # DROPDOWNS
           htmlDiv(
             list(
               htmlDiv(
