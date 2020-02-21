@@ -195,17 +195,14 @@ app$callback(
               htmlDiv(
                 list(
                   htmlP("Select a variable for the x-axis:"),
-                  xaxis
-            )
-          ),
-          
-          htmlDiv(
-            list(
-              htmlP("Select a variable for the y-axis:"),
-              yaxis
+                  xaxis,
+                  htmlP("Select a variable for the y-axis:"),
+                  yaxis
             )
           )
-        )
+        ), style = list('display'='flex',
+                        'justify-content'='flex-start',
+                        'white-space'='pre-line')
       ),
       htmlDiv(
             list(
