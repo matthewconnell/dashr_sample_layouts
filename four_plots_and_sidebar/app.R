@@ -34,9 +34,7 @@ histplot <- function(xaxis="mpg") {
   # @Example : 
   #
   # --------
-  
-  # xaxis = !! xaxis
-  
+
   #Return the ggplot
   hist <- ggplot(data = df, aes(x=df[[xaxis]])) +
     geom_histogram(bins = 30) +
@@ -187,27 +185,21 @@ app$layout(
       ),
       
       # Main area
-          # DROPDOWNS
+      # DROPDOWNS
+      htmlDiv(
+        list(
           htmlDiv(
             list(
-              htmlDiv(
-                list(
-                  htmlP("Select a variable for the x-axis:"),
-                  xaxis
-                )
-              ),
-              
-              htmlDiv(
-                list(
-                  htmlP("Select a variable for the y-axis:"),
-                  yaxis
-                )
-              )
-            ), style = list('background-color'='lightgrey', 
-                            'display'='flex',
-                            'justify-content'='space-around',
-                            'white-space'='pre-line')
-          ),
+              htmlP("Select a variable for the x-axis:"),
+              xaxis,
+              htmlP("Select a variable for the y-axis:"),
+              yaxis
+            )
+          )
+        ), style = list('display'='flex',
+                        'justify-content'='flex-start',
+                        'white-space'='pre-line')
+      ),
               htmlDiv(
                 list(
                   htmlDiv(
