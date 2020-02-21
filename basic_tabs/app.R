@@ -132,32 +132,10 @@ app$layout(
                     'text-align'='center')
   ),
   
-  # Main area
+  # MAIN AREA
   htmlDiv(
     list(
-          # DROPDOWNS
-      htmlDiv(
-        list(
-              htmlDiv(
-                list(
-                  htmlP("Select a variable for the x-axis:"),
-                  xaxis
-                )
-              ),
-                
-              htmlDiv(
-                list(
-                  htmlP("Select a variable for the y-axis:"),
-                  yaxis
-              )
-              )
-              ), style = list('background-color'='lightgrey', 
-                            'display'='flex',
-                            'justify-content'='space-around',
-                            'white-space'='pre-line')
-          ),
-          
-          # tabs
+          # TABS
           dccTabs(id="tabs", value='tab-1', children=list(
             dccTab(label='Histogram', value='tab-1'),
             dccTab(label='Scatterplot', value='tab-2')
@@ -185,21 +163,69 @@ app$callback(
 
   render_content <- function(tab) {
     if (tab == 'tab-1') {
+      htmlDiv(
+        list(
+          htmlDiv(
+            list(
+              htmlDiv(
+                list(
+                  htmlP("Select a variable for the x-axis:"),
+                  xaxis
+                )
+              ),
+          
+          htmlDiv(
+            list(
+              htmlP("Select a variable for the y-axis:"),
+              yaxis
+            )
+          )
+        ), style = list('background-color'='lightgrey', 
+                        'display'='flex',
+                        'justify-content'='space-around',
+                        'white-space'='pre-line')
+      ),
     htmlDiv(
       list(
         # Histogram here
         graph_hist
+            )
+          )
         )
-    )
+      )
       }
   
     else if (tab == 'tab-2') {
+      htmlDiv(
+        list(
           htmlDiv(
+            list(
+              htmlDiv(
+                list(
+                  htmlP("Select a variable for the x-axis:"),
+                  xaxis
+            )
+          ),
+          
+          htmlDiv(
+            list(
+              htmlP("Select a variable for the y-axis:"),
+              yaxis
+            )
+          )
+        ), style = list('background-color'='lightgrey', 
+                        'display'='flex',
+                        'justify-content'='space-around',
+                        'white-space'='pre-line')
+      ),
+      htmlDiv(
             list(
               # Scatterplot here
               graph_scatter
               )
           )
+        )
+      )
     }
     }
   )
