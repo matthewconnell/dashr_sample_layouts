@@ -172,17 +172,9 @@ app$callback(
                   htmlP("Select a variable for the x-axis:"),
                   xaxis
                 )
-              ),
+              )
           
-          htmlDiv(
-            list(
-              htmlP("Select a variable for the y-axis:"),
-              yaxis
-            )
-          )
-        ), style = list('background-color'='lightgrey', 
-                        'display'='flex',
-                        'justify-content'='space-around',
+        ), style = list('display'='flex',
                         'white-space'='pre-line')
       ),
     htmlDiv(
@@ -213,10 +205,7 @@ app$callback(
               yaxis
             )
           )
-        ), style = list('background-color'='lightgrey', 
-                        'display'='flex',
-                        'justify-content'='space-around',
-                        'white-space'='pre-line')
+        )
       ),
       htmlDiv(
             list(
