@@ -167,10 +167,9 @@ app$layout(
       ),
   htmlDiv(
     list(
-      htmlP("Motor Trend Car Road Tests
-             Description
-             
-             The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models). Source: https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html")
+      htmlH2("Motor Trend Car Road Tests"),
+      htmlH3("Description:"),
+      htmlP("The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models). Source: https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html")
     ), style = list('background-color'='black',
                     'color'='white',
                     'font-family'='Courier',
