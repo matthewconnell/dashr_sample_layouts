@@ -24,7 +24,7 @@ options(repr.plot.width = 10, repr.plot.height = 10)
 # When making a dashboard, it's a good idea to set a default for your plot functions as the 
 # plots can break easily if the user doesn't select a value for one of the axes, for example
 
-histplot <- function(xaxis="mpg") { 
+histplot <- function(xaxis="mpg", num_bins=3) { 
   
   # Function creates a histogram showing count of cars with different numbers of cylinders
   #
@@ -44,7 +44,7 @@ histplot <- function(xaxis="mpg") {
   
   # Make the histogram object, assign it to 'hist'
   hist <- ggplot(data = df, aes(x=!!sym(xaxis))) +
-    geom_histogram(bins = 30) +
+    geom_histogram(bins = as.integer(num_bins)) +
     labs(y = "Number of cars", x = xaxis) +
     theme_bw(20)
   
@@ -119,6 +119,23 @@ yaxis <- dccDropdown(
   value = 'mpg'
 )
 
+# Create a slider for number of bins
+num_bins <- dccSlider(
+  id="num_bins",
+  min=1,
+  max=30,
+  value=3,
+  step=1,
+  marks = as.list(
+    setNames(
+      seq(2, 30, 3),
+      seq(2, 30, 3)
+    )
+  )
+)
+
+## Attribution and more good slider stuff: https://github.com/plotly/dash-sample-apps/blob/639ebbb57df5d261ff28d92ad2edc9dc092aa7c7/apps/dashr-svm/app.R#L96
+
 
 # Start the layout
 app$layout(
@@ -149,6 +166,9 @@ app$layout(
                   
                   htmlP("Select a variable for the y-axis:"),
                   yaxis,
+                  
+                  htmlP("Choose the number of bins for your histogram:"),
+                  num_bins,
                   
                   htmlBr(),
 
@@ -197,11 +217,12 @@ app$callback(
   output=list(id = 'histogram', property = 'figure'),
   
   # with the 'value' property of the object with id 'xaxis' (the x-axis dropdown)
-  params=list(input(id = 'xaxis', property = 'value')),
+  params=list(input(id='xaxis', property = 'value'),
+              input(id='num_bins', property = 'value')),
   
   # Update the histplot
-  function(xaxis) {
-    histplot(xaxis)
+  function(xaxis, num_bins) {
+    histplot(xaxis, num_bins)
   }
 )
 
@@ -211,7 +232,8 @@ app$callback(
   # Update the 'figure' property of the object with id 'scatter' 
   output=list(id = 'scatter_plot', property = 'figure'),
   
-  params=list(input(id = 'xaxis', property = 'value'), input(id='yaxis', property = 'value')),
+  params=list(input(id='xaxis', property = 'value'), 
+              input(id='yaxis', property = 'value')),
   
   # Update the histplot
   function(xaxis, yaxis) {
