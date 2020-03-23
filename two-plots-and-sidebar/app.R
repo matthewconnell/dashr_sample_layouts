@@ -43,7 +43,7 @@ histplot <- function(xaxis="mpg") {
   # --------
   
   # Make the histogram object, assign it to 'hist'
-  hist <- ggplot(data = df, aes(x=df[[xaxis]])) +
+  hist <- ggplot(data = df, aes(x=!!sym(xaxis))) +
     geom_histogram(bins = 30) +
     labs(y = "Number of cars", x = xaxis) +
     theme_bw(20)
@@ -70,7 +70,7 @@ scatterplot <- function(xaxis="mpg", yaxis="mpg") {
   
   #Return the ggplot
   scatter_plot <- df %>% 
-    ggplot(aes(x= df[[xaxis]], y = df[[yaxis]])) +
+    ggplot(aes(x= !!sym(xaxis), y = !!sym(yaxis))) +
     geom_point() + 
     geom_smooth(se=FALSE) +
     theme_bw(20) +
