@@ -22,7 +22,7 @@ The different layouts can be found in the descriptively titled folders.
 
 ![](img/basic-tabs.png)
 
-> Tabs in DashR are a little more complicated than they look and more complicated and Dash for Python. They're good to use if you have a lot of plots or if you want to put documentation on a separate page. 
+> Tabs in DashR are a little more complicated than they look and more complicated than Dash for Python. They're good to use if you have a lot of plots or if you want to put documentation on a separate page. 
 
 ### Contribution
 
