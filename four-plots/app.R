@@ -36,7 +36,7 @@ histplot <- function(xaxis="mpg") {
   # --------
 
   #Return the ggplot
-  hist <- ggplot(data = df, aes(x=df[[xaxis]])) +
+  hist <- ggplot(data = df, aes(x=!!sym(xaxis))) +
     geom_histogram(bins = 30) +
     labs(y = "Number of cars", x = xaxis) +
     theme_bw(20)
@@ -65,7 +65,7 @@ scatterplot <- function(xaxis="mpg", yaxis="mpg") {
   
   #Return the ggplot
   scatter_plot <- df %>% 
-    ggplot(aes(x= df[[xaxis]], y = df[[yaxis]])) +
+    ggplot(aes(x=!!sym(xaxis), y =!!sym(yaxis))) +
     geom_point() + 
     geom_smooth(se=FALSE) +
     theme_bw(20) +
@@ -94,7 +94,7 @@ barplot <- function(xaxis="mpg", yaxis="mpg") {
   
   #Return the ggplot
   bar_plot <- df %>% 
-    ggplot(aes(x= df[[xaxis]], y = df[[yaxis]])) +
+    ggplot(aes(x=!!sym(xaxis), y =!!sym(yaxis))) +
     geom_col(position = "dodge") + 
     theme_bw(20) +
     labs(y=yaxis, x=xaxis)
@@ -120,7 +120,7 @@ lineplot <- function(xaxis="mpg", yaxis="mpg") {
   
   #Return the ggplot
   line_plot <- df %>% 
-    ggplot(aes(x= df[[xaxis]], y = df[[yaxis]])) +
+    ggplot(aes(x=!!sym(xaxis), y=!!sym(yaxis))) +
     geom_line() + 
     theme_bw(20) +
     labs(y=yaxis, x=xaxis)
