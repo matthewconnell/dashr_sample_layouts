@@ -76,7 +76,8 @@ scatterplot <- function(xaxis="mpg", yaxis="mpg") {
     theme_bw(20) +
     labs(y=yaxis, x=xaxis)
   
-  ggplotly(scatter_plot)
+  ggplotly(scatter_plot,
+           width=500)
   
 }
 
