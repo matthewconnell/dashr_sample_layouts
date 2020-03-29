@@ -43,7 +43,7 @@ histplot <- function(xaxis="cyl", num_bins=3) {
   # --------
   
   # Make the histogram object, assign it to 'hist'
-  hist <- ggplot(data = df, aes(x=!!sym(xaxis))) +
+  hist <- ggplot(data = df, aes(x=cyl)) +
     geom_histogram(bins = as.integer(num_bins)) +
     labs(y = "Number of cars", x = xaxis) +
     theme_bw(20)
@@ -70,7 +70,11 @@ scatterplot <- function(xaxis="qsec",
   #
   # --------
   
-  
+  # Selection starts as NULL, so set it to some value.
+  if (is.null(selection)) {
+    selection <- 4
+  }
+
   #Return the ggplot
   df_filtered <- filter(df, cyl == selection)
   
