@@ -236,7 +236,7 @@ app$callback(
   params=list(input(id='num_bins', property = 'value')),
   
   # Update the histplot
-  function(xaxis, num_bins) {
+  function(xaxis, num_bins=3) {
     histplot(xaxis, num_bins)
   }
 )
