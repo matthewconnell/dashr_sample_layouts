@@ -82,7 +82,7 @@ scatterplot <- function(xaxis="qsec",
     ggplot(aes(x= !!sym(xaxis), y = !!sym(yaxis))) +
     geom_point() + 
     theme_bw(20) +
-    labs(y=yaxis, x=xaxis)
+    labs(y=yaxis, x=xaxis, title = paste0("Cars with ", selection, " cylinders"))
   
   ggplotly(scatter_plot,
            width=500)
@@ -115,7 +115,7 @@ xaxis <- dccDropdown(
     }),
   
   # Assign a default value for the dropdown
-  value = 'mpg'
+  value = 'drat'
 )
 
 # Do the same for the y-axis
@@ -125,7 +125,7 @@ yaxis <- dccDropdown(
     names(df), function(x){
       list(label=x, value=x)
     }),
-  value = 'mpg'
+  value = 'qsec'
 )
 
 # Create a slider for number of bins
