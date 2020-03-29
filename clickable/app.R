@@ -78,11 +78,25 @@ scatterplot <- function(xaxis="qsec",
   #Return the ggplot
   df_filtered <- filter(df, cyl == selection)
   
+  # Set colors for scatterplot
+  fill_col <- "purple"
+  
+  if (selection == 4) {
+    fill_col <- "green"
+  }
+  
+  if (selection == 6) {
+    fill_col <- "blue"
+  }
+  
+  
   scatter_plot <- df_filtered %>% 
     ggplot(aes(x= !!sym(xaxis), y = !!sym(yaxis))) +
-    geom_point() + 
+    geom_point(color=fill_col) + 
     theme_bw(20) +
-    labs(y=yaxis, x=xaxis, title = paste0("Cars with ", selection, " cylinders"))
+    labs(y=yaxis, x=xaxis, title = paste0("Cars with ", selection, " cylinders")) +
+    scale_colour_manual(values = c("red", "blue", "green"))
+  
   
   ggplotly(scatter_plot,
            width=500)
